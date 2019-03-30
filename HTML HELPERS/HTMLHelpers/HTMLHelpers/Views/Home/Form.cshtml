@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+    <style>
+        .textbox{
+            background-color:lightyellow;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+
+        @*@{Html.BeginForm("About","Home",FormMethod.Post);
+        Html.EndForm();}*@
+
+        @using (Html.BeginForm("About", "Home", FormMethod.Post))
+        {
+            <table>
+                <tr><td>@Html.Label("Name", "Name")</td><td>@Html.TextBox("txtName", null, new { @class = "textbox", placeholder = "Enter Name" })</td></tr>
+                <tr><td>@Html.Label("Name", "Address")</td><td>@Html.TextArea("Address", null, new {@class="textbox",cols="20",rows="4",placeholder="Enter Address" })</td></tr>
+                <tr><td>@Html.Label("Gender", "Gender")</td><td>Male:@Html.RadioButton("Gender", "Male", true) Female:@Html.RadioButton("Gender", "Female", false)</td></tr>
+                <tr><td>@Html.Label("IsMarried", "Is Married")</td><td>@Html.CheckBox("IsMarried",false)</td></tr>
+                <tr><td>@Html.Label("Country", "Country")</td><td>
+                    
+                    @Html.DropDownList("Country", new List<SelectListItem> { 
+                        new SelectListItem{Text="India",Value="0"},
+                        new SelectListItem{Text="SriLanka",Value="1"},
+                        new SelectListItem{Text="Bangladesh",Value="2"}
+                    })
+                    
+                    </td></tr>
+                <tr><td>@Html.Label("Password","Password")</td><td>@Html.Password("password")</td></tr>
+                <tr><td></td><td>
+
+                    @Html.Hidden("StudentID")
+                    
+                    </td></tr>
+            </table>
+
+        }
+
+
+    </div>
+</body>
+</html>
